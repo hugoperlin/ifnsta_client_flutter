@@ -53,7 +53,6 @@ class MyApp extends StatelessWidget {
         )
       ],
       builder: (ctx, _) {
-        final temaProvider = Provider.of<TemaProvider>(ctx);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: "IFnsta",

@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider.value(value: TemaProvider()),
         Provider.value(value: HttpService(allowBadCertificate: true)),
         ChangeNotifierProxyProvider<HttpService, AuthService>(
           create: (ctx) => AuthService(
@@ -53,10 +54,28 @@ class MyApp extends StatelessWidget {
         )
       ],
       builder: (ctx, _) {
+        final temaProvider = Provider.of<TemaProvider>(ctx);
+
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: "IFnsta",
           initialRoute: Splash.routeName,
+          themeMode: temaProvider.isDark ? ThemeMode.dark : ThemeMode.light,
+          darkTheme: ThemeData.dark(),
+          theme: ThemeData(
+            primaryColor: Colors.purple,
+            colorScheme: ColorScheme.light(
+              primary: Colors.purple,
+              secondary: Colors.amber,
+            ),
+            fontFamily: 'RobotoMono',
+            textTheme: TextTheme(
+              headline6: TextStyle(
+                  color: Colors.purple,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
           routes: {
             Autenticacao.routeName: (ctx) => Autenticacao(),
             Splash.routeName: (ctx) => Splash(),

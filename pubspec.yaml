@@ -70,6 +70,7 @@ flutter:
           weight: 300
         - asset: assets/fonts/Roboto_Mono/RobotoMono-Bold.ttf
           weight: 700
+    
     - family: Allison
       fonts:
         - asset: assets/fonts/Allison/Allison-Regular.ttf

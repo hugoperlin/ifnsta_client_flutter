@@ -13,15 +13,23 @@ class TemaProvider with ChangeNotifier {
 }
 
 class MeusTemas {
-  static final dark = ThemeData(
-      scaffoldBackgroundColor: Colors.grey.shade700,
-      primaryColor: Colors.black,
-      colorScheme: ColorScheme.dark(primary: Colors.white));
+  static final darkTheme = ThemeData(
+    scaffoldBackgroundColor: Colors.grey.shade900,
+    primaryColor: Colors.black,
+    colorScheme: ColorScheme.dark(),
+    iconTheme: IconThemeData(color: Colors.purple.shade200, opacity: 0.8),
+  );
 
-  static final light = ThemeData(
-    scaffoldBackgroundColor: Colors.yellow.shade100,
-    primaryColor: Colors.pink,
-    colorScheme: ColorScheme.light(primary: Colors.pink),
+  static final lightTheme = ThemeData(
+    primaryColor: Colors.purple,
+    colorScheme: ColorScheme.light(
+      primary: Colors.purple,
+      secondary: Colors.amber,
+    ),
     fontFamily: 'RobotoMono',
+    textTheme: TextTheme(
+      headline6: TextStyle(
+          color: Colors.purple, fontSize: 20, fontWeight: FontWeight.bold),
+    ),
   );
 }

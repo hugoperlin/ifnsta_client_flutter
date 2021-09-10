@@ -54,6 +54,7 @@ class ItemLista extends StatelessWidget {
                   Text(
                     "${imagem.dono.username}",
                     textAlign: TextAlign.right,
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                 ],
               ),

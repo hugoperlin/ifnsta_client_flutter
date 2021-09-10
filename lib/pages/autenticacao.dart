@@ -57,6 +57,7 @@ class _AutenticacaoState extends State<Autenticacao> {
     return Scaffold(
       appBar: AppBar(
         title: Text('IFnsta'),
+        actions: [MeuSwitchTheme()],
       ),
       body: Padding(
         padding: EdgeInsets.all(8.0),
@@ -231,14 +232,14 @@ class _CustomFormField extends StatelessWidget {
   }
 }
 
-class SwithTheme extends StatefulWidget {
-  SwithTheme({Key? key}) : super(key: key);
+class MeuSwitchTheme extends StatefulWidget {
+  MeuSwitchTheme({Key? key}) : super(key: key);
 
   @override
-  _SwithThemeState createState() => _SwithThemeState();
+  _SwitchThemeState createState() => _SwitchThemeState();
 }
 
-class _SwithThemeState extends State<SwithTheme> {
+class _SwitchThemeState extends State<MeuSwitchTheme> {
   @override
   Widget build(BuildContext context) {
     final temaProvider = Provider.of<TemaProvider>(context, listen: false);

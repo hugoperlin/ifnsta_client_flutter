@@ -20,14 +20,26 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool _init = true;
+  bool _working = false;
 
   @override
   void didChangeDependencies() {
     if (_init) {
       Provider.of<ImagemService>(context, listen: false).carregaLista();
+      _init = false;
     }
 
     super.didChangeDependencies();
+  }
+
+  refresh(BuildContext context) async {
+    setState(() {
+      _working = true;
+    });
+    await Provider.of<ImagemService>(context, listen: false).carregaLista();
+    setState(() {
+      _working = false;
+    });
   }
 
   @override
@@ -40,7 +52,22 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text('IFnsta'),
-        actions: [IconButton(onPressed: auth.logout, icon: Icon(Icons.logout))],
+        actions: [
+          _working
+              ? Transform.scale(
+                  //permite alterar o tamanho de um widget
+                  scale: 0.3,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
+                )
+              : IconButton(
+                  onPressed: () {
+                    refresh(context);
+                  },
+                  icon: Icon(Icons.refresh)),
+          IconButton(onPressed: auth.logout, icon: Icon(Icons.logout)),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
